@@ -9,34 +9,37 @@ import ClickerScreen from "./screens/clicker";
 const Tab = createBottomTabNavigator()
 
 
-
 const MyTabs = () => {
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Home') {
-            iconName = focused
-              ? 'home'
-              : 'home-outline';
-          } else if (route.name === 'Clicker') {
-            iconName = focused ? 'hand-right' : 'hand-right-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
         tabBarActiveTintColor: 'tomato',
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Clicker" component={ClickerScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen name="Home" component={HomeScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+
+            return <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />;
+          },
+        }} />
+      <Tab.Screen name="Clicker" component={ClickerScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+
+            return <Ionicons name={focused ? 'hand-right' : 'hand-right-outline'} size={size} color={color} />;
+          },
+        }} />
+      <Tab.Screen name="Profile" component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => {
+
+            return <Ionicons name={focused ? 'person' : 'person-outline'} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'blue',
+        }} />
     </Tab.Navigator>
   )
 }

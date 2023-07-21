@@ -15,18 +15,17 @@ const options = {
 const getData = async () => {
     try {
         const response = await axios.request(options);
-        console.log(response.data);
+        console.log(response)
     } catch (error) {
         console.error(error);
     }
 }
 
 const HomeScreen = (): React.JSX.Element => {
-    console.log(getData())
+    getData()
     return (
         <View className="flex flex-row gap-4 ml-2 mt-2">
 
-            <StatusBar style="light" />
         </View>
     );
 };
